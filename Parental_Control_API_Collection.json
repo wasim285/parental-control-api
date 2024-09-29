@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "273fa86b-067b-44a6-bf1c-8b686674a103",
+		"name": "Parental Control API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34742502"
+	},
+	"item": [
+		{
+			"name": "http://localhost:4000",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000"
+				},
+				"description": "### Request Description\n\nThis endpoint is an HTTP GET request to [http://localhost:4000](http://localhost:4000). It does not include a request body.\n\n### Response\n\nThe response from the last execution had a status code of 200 and a content type of text/html. The response body contained the message \"Server is running!\".\n\n### JSON Schema\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"number\",\n      \"description\": \"The status code of the response\"\n    },\n    \"content-type\": {\n      \"type\": \"string\",\n      \"description\": \"The content type of the response\"\n    },\n    \"message\": {\n      \"type\": \"string\",\n      \"description\": \"The message returned by the server\"\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/auth/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/auth/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"auth",
+						""
+					]
+				},
+				"description": "### Auth API\n\nThis endpoint is used to authenticate and access the authentication routes.\n\n#### Request Body\n\nThis is a GET request and does not require a request body.\n\n#### Response\n\n- Status: 200\n    \n- Content-Type: text/html\n    \n- Auth routes are working!"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/auth/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"testpassword\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				},
+				"description": "### Register User\n\nThis endpoint is used to register a new user.\n\n#### Request Body\n\n- `username` (string, required): The username of the user.\n    \n- `password` (string, required): The password of the user.\n    \n\n#### Response\n\nThe response will be in JSON format with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"testuser\",\r\n    \"password\": \"testpassword\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				},
+				"description": "### Login API\n\nThis API endpoint is used to authenticate and login a user.\n\n#### Request Body\n\n- `username` (text): The username of the user.\n    \n- `password` (text): The password of the user.\n    \n\n#### Response\n\nUpon successful authentication, the API returns a JSON object with a `token` attribute.\n\nExample:\n\n``` json\n{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/auth/profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTcyNzU5OTYwMiwiZXhwIjoxNzI3NjAzMjAyfQ.maNwiBmhhT6rU0PMg9pXhXgvKluZe1Axz112_6wK7Y4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/api/auth/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"auth",
+						"profile"
+					]
+				},
+				"description": "This endpoint makes an HTTP GET request to retrieve the user's profile information from the server. The request does not include a request body.\n\n### Response\n\nUpon a successful execution, the server responds with a status code of 200 and a JSON object in the response body. The JSON object contains the user's profile information, including the user ID.\n\nExample response:\n\n``` json\n{\n    \"message\": \"\",\n    \"userId\": 0\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/content/add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTcyNzUxOTczNCwiZXhwIjoxNzI3NTIzMzM0fQ.qKhTUERvnKOGf2yu-irSGb_j4cyQ0Mfe612la2Hy0cA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"url\": \"restrictedsite.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/api/content/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"content",
+						"add"
+					]
+				},
+				"description": "### Add Content\n\nThis endpoint allows the addition of content by making an HTTP POST request.\n\n#### Request Body\n\n- `url` (string, required): The URL of the content to be added.\n    \n\n#### Response\n\nThe response is in JSON format with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        }\n    }\n}\n\n ```\n\nThe response includes a `message` field indicating the status of the content addition."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/content/list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTcyNzUxOTczNCwiZXhwIjoxNzI3NTIzMzM0fQ.qKhTUERvnKOGf2yu-irSGb_j4cyQ0Mfe612la2Hy0cA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/api/content/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"content",
+						"list"
+					]
+				},
+				"description": "### GET /api/content/list\n\nThis endpoint retrieves a list of content.\n\n#### Request\n\nThis is a simple GET request with no request body.\n\n#### Response\n\nThe response will be a JSON array containing objects with the following properties:\n\n- `id` (number): The ID of the content.\n    \n- `user_id` (number): The ID of the user associated with the content.\n    \n- `url` (string): The URL of the content.\n    \n\nExample response body:\n\n``` json\n[\n    {\n        \"id\": 0,\n        \"user_id\": 0,\n        \"url\": \"\"\n    }\n]\n\n ```\n\n#### JSON Schema\n\n``` json\n{\n    \"type\": \"array\",\n    \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"id\": {\n                \"type\": \"number\"\n            },\n            \"user_id\": {\n                \"type\": \"number\"\n            },\n            \"url\": {\n                \"type\": \"string\"\n            }\n        },\n        \"required\": [\"id\", \"user_id\", \"url\"]\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/content/remove/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTcyNzUxOTczNCwiZXhwIjoxNzI3NTIzMzM0fQ.qKhTUERvnKOGf2yu-irSGb_j4cyQ0Mfe612la2Hy0cA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/api/content/remove/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"content",
+						"remove",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				},
+				"description": "### Request Description\n\nThis endpoint is used to delete content with the ID 4.\n\n### Response\n\nThe response for this request is a JSON object with a status code of 200 and a content type of \"application/json\". The response body includes a \"message\" field.\n\n``` json\n{\n    \"message\": \"\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/screen-time/set",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/api/screen-time/set",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"screen-time",
+						"set"
+					]
+				},
+				"description": "### Set Screen Time Limit\n\nThis endpoint allows the user to set a daily screen time limit with optional start and end times.\n\n#### Request Body\n\n- `dailyLimit` (number): The daily screen time limit in minutes.\n    \n- `startTime` (string, optional): Optional start time in HH:MM:SS format.\n    \n- `endTime` (string, optional): Optional end time in HH:MM:SS format.\n    \n\n#### Response\n\nUpon successful execution, the server will respond with a status code of 201 and a JSON object with a message indicating the success of the operation.\n\nExample:\n\n``` json\n{\n    \"message\": \"\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/screen-time/get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/screen-time/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"screen-time",
+						"get"
+					]
+				},
+				"description": "### GET /api/screen-time/get\n\nThis endpoint retrieves screen time information for a user.\n\n#### Request\n\nThis endpoint does not require any request body.\n\n#### Response\n\nThe response will be in JSON format and will have the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": {\n      \"type\": \"number\"\n    },\n    \"user_id\": {\n      \"type\": \"number\"\n    },\n    \"daily_limit\": {\n      \"type\": \"number\"\n    },\n    \"start_time\": {\n      \"type\": \"string\"\n    },\n    \"end_time\": {\n      \"type\": \"string\"\n    },\n    \"created_at\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/screen-time/report",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/api/screen-time/report",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"screen-time",
+						"report"
+					]
+				},
+				"description": "### Get User Reports\n\nThis endpoint retrieves the reports for a specific user.\n\n#### Request\n\n- Method: GET\n    \n- URL: `http://localhost:4000/api/reports/user/{5}`\n    \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- { \"screenTimeLogs\": \\[\\], \"contentRestrictions\": \\[\\], \"totalDuration\": 0, \"dailyDurations\": {}, \"averageDailyTime\": 0, \"violations\": \\[\\]}"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:4000/api/screen-time/start",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0dXNlciIsImlhdCI6MTcyNzY0NjkyNSwiZXhwIjoxNzI3NjUwNTI1fQ.UKPk0qicn4PWf0BPBVewzNC3fEdKRZf7U0ZfepAthrM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/api/screen-time/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"api",
+						"screen-time",
+						"start"
+					]
+				},
+				"description": "### Start Screen Time\n\nThis endpoint is used to initiate the tracking of screen time.\n\n#### Request Body\n\n- `user_id` (text, required): The ID of the user for whom the screen time is being tracked.\n    \n- `start_time` (text, required): The start time of the screen time tracking.\n    \n\n#### Response\n\nUpon successful initiation of screen time tracking, the server will respond with a status code of 201 and a JSON object with a `message` key.\n\nExample:\n\n``` json\n{\n    \"message\": \"\"\n}\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
